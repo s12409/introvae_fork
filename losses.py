@@ -1,11 +1,11 @@
 import numpy as np
 import keras.backend as K
-from keras.objectives import mean_squared_error
+from keras.losses import mse
 
 
 def mse_loss(x, x_decoded, original_shape):
     original_dim = np.float32(np.prod(original_shape))
-    return K.mean(original_dim * mean_squared_error(x, x_decoded))
+    return K.mean(original_dim * mse(x, x_decoded))
 
 
 def reg_loss(mean, log_var):
